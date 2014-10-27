@@ -7,6 +7,16 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.widget.Toast;
 
+
+/*
+ * This is a simple broadcast receiver to read SMS messages.
+ * No attempt was made to change/delete the messages.
+ * 
+ * It will read the message and then toast what it said.   Not once installed,
+ * this will always intercept all sms messages.
+ * 
+ * No attempt was made to receive MMS messages in this code.
+ */
 public class SMSRecv extends BroadcastReceiver {
 
 	private static final String ACTION = "android.provider.Telephony.SMS_RECEIVED";

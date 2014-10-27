@@ -18,6 +18,12 @@ import android.widget.Toast;
 /*
  * A simple demo of how to send a sms (text) message.
  * It also has a methods to check and see if the message was sent or failed.
+ * 
+ * This was tested with android 4.4 and you can send a message this way.  
+ * This app does not become the default sms provider.
+ * It also reads the sms message via broadcast receiver, but makes not attempt to change/delete the message. 
+ * 
+ * There is no attempt in this code to read/write MMS messages.
  */
 
 public class MainActivity extends Activity {
@@ -107,6 +113,11 @@ public class MainActivity extends Activity {
 			}
 		}, new IntentFilter(DELIVERED));        
 
+		/*
+		 * These two lines below actually send the message via an intent.
+		 * The default provider does not show up and this is backward compatible to 2.3.3  
+		 * 
+		 */
 		SmsManager sms = SmsManager.getDefault();
 		sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);        
 	} 
