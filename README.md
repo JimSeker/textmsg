@@ -1,5 +1,8 @@
-text messaging Examples
+android text messaging Examples
 ===========
+eclipse/ has the examples in eclipse project format, no longer updated.  Otherwise the examples are for android studio.
+
+
 smsDemo is a simple app to send and receive sms messages.  The code has been tested on android 4.4 and it works.
   It does not attempt to be a default sms provider.  The sms are sent via an intent and the default will
    have a copy of the message as well, but the default provider doesn't have to user do anything.
