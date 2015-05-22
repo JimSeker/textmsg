@@ -1,13 +1,13 @@
 package edu.cs4730.smsdemo;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 /*
  * nothing to see here.  See the MainFragment code.
  */
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
 
     @Override
