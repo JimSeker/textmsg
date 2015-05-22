@@ -9,7 +9,7 @@ smsDemo is a simple app to send and receive sms messages.  The code has been tes
 smsDemo2 sends binary sms messages.  may work, but it is untested in 4.4+
 
 mmsDemo is a hack to send mms messages for devices prior to android 4.4. Messenger comes up and the user is required to press the send button in order to make it work.  
-A Note: This example is abanded, until I can find a better method. This example has been abounded and hopefully I can find a better example. A default sms provider is required to send and receive mms 4.4+ or just use the content provider to read the mms messages.
+A Note: This example has been abounded and hopefully I can find a better example. A default sms provider is required to send and receive mms 4.4+ or just use the content provider to read the mms messages.
 
 
 These are example code for University of Wyoming, Cosc 4730 Mobile Programming course.
