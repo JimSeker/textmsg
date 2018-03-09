@@ -1,13 +1,16 @@
 package edu.cs4730.smsdemo;
 
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.telephony.SmsManager;
 import android.view.LayoutInflater;
@@ -51,13 +54,21 @@ public class MainFragment extends Fragment {
 
         btnSendSMS.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                if ((ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) ||
+                    (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED)) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE},
+                        MainActivity.REQUEST_PERM_ACCESS);
+                    return;
+                }
+
                 String phoneNo = txtPhoneNo.getText().toString();
                 String message = txtMessage.getText().toString();
                 if (phoneNo.length() > 0 && message.length() > 0)
                     sendSMS(phoneNo, message);
                 else
                     Toast.makeText(getActivity(),
-                            "Please enter both phone number and message.", Toast.LENGTH_SHORT).show();
+                        "Please enter both phone number and message.", Toast.LENGTH_SHORT).show();
             }
         });
         return myView;
