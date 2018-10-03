@@ -37,6 +37,8 @@ public class MainFragment extends Fragment {
     EditText txtMessage;
 
 
+
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -56,6 +58,7 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
 
                 if ((ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) ||
+                        (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) ||
                     (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED)) {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE},
                         MainActivity.REQUEST_PERM_ACCESS);

@@ -1,8 +1,10 @@
 package edu.cs4730.smsdemo;
 
 import android.Manifest;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -12,6 +14,8 @@ import android.widget.Toast;
  */
 
 public class MainActivity extends AppCompatActivity {
+
+    private SMSRecv smsBroadcastReceiver;
 
 
     public static final int REQUEST_PERM_ACCESS = 100;
@@ -53,5 +57,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onResume() {
+        smsBroadcastReceiver = new SMSRecv();
+        registerReceiver(smsBroadcastReceiver, new IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION));
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        unregisterReceiver(smsBroadcastReceiver);
+    }
 
 }
